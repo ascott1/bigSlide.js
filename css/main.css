@@ -1,0 +1,31 @@
+.panel {
+    position: fixed;
+    top: 0;
+    left: -15.625em; /* 250px */
+    width: 15.625em;
+    height: 100%;
+    z-index: 1000;
+}
+
+.no-js .panel {
+    left: 0;
+}
+
+.active .panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.active {
+    left: 15.625em;
+}
+
+/* CSS Transitions for Slide Effect */
+.wrap,
+.panel {
+    -moz-transition: left 0.2s ease-in-out;
+    -webkit-transition: left 0.2s ease-in-out;
+    -o-transition: left 0.2s ease-in-out;
+    transition: left 0.2s ease-in-out;
+}
