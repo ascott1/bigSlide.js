@@ -1,10 +1,13 @@
-$(document).ready(function() {
-  $('.menu-link').click(function(){
+var settings.menuLink = $('.menu-link'),
+  settings.menu = $('#menu'),
+  $wrap = $('.wrap');
 
-    // toggle the active class on the content wrapper
-    $('.wrap').toggleClass('active');
+$(settings.menuLink).click(function(){
 
-    // prevent default link behavior
-    return false;
-  });
+// toggle the active class on the content wrapper
+$wrap.toggleClass('slide');
+settings.menu.toggleClass('slide');
+
+// prevent default link behavior
+return false;
 });

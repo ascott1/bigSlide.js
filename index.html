@@ -9,29 +9,23 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,900' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/main.css">
-
-        
-        <script src="js/html5shiv.js"></script>
-
-        <!-- change body class to JS in head to avoid FOUC http://paulirish.com/2009/avoiding-the-fouc-v3/ -->
-        <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
-
+        <link rel="stylesheet" href="css/custom.css">
     </head>
     <body>
+
+    <nav id="menu" class="panel" role="navigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">The Ballad of El Goodo</a></li>
+            <li><a href="#">Thirteen</a></li>
+            <li><a href="#">September Gurls</a></li>
+            <li><a href="#">What's Going Ahn</a></li>
+        </ul>
+    </nav>
         
-    <div class="wrap">
+    <div class="wrap push">
 
         <a href="#menu" class="menu-link">&#9776;</a>
-        <nav id="menu" class="panel" role="navigation">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">The Ballad of El Goodo</a></li>
-                <li><a href="#">Thirteen</a></li>
-                <li><a href="#">September Gurls</a></li>
-                <li><a href="#">What's Going Ahn</a></li>
-            </ul>
-        </nav>
     
         <h1>Big Slide</h1>
 
@@ -42,6 +36,11 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/big-slide.js"></script>
+    <script src="js/jquery.big-slide.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.menu-link').bigSlide();
+    });
+    </script>
     </body>
 </html>

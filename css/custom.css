@@ -6,7 +6,7 @@ body {
 
 .wrap {
     position: relative;
-    max-width: 32.5em;
+    max-width: 80%;
     margin: 0 auto;
     padding: 20px;
 }

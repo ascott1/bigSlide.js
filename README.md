@@ -1,0 +1,1 @@
+Big Slide is a teeny tiny (~1kb compressed) jQuery plugin for creating off-screen slide panel naivgation.
