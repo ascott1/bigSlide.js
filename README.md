@@ -45,3 +45,36 @@ To initialize the plugin,:
 | menuWidth  | 15.6em        | The width of the navigation menu |
 | speed      | 300           | The speed (in milliseconds) of the navigation menu    |
 
+## Other notes
+
+Although bigSlide will automatically position your menu off screen, I recommend adding the following to your CSS to prevent a flash of the menu on load:
+
+	.panel {
+		position: fixed;
+		left: -15.625em; /*or width of your navigation panel*/
+		width: 15.625em; /*should match the above value*/
+	}
+	
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2013 Adam Scott
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
