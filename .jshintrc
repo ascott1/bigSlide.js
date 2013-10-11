@@ -1,5 +1,6 @@
 {
-    "bitwise" :true,
+    "bitwise": true,
+    "camelcase": true,
     "eqeqeq": true,
     "forin": false,
     "immed": true,
@@ -17,6 +18,7 @@
     "loopfunc": true,
     "laxbreak": true,
     "smarttabs": true,
+    "asi": true,
 
     "predef": [
         "mw",
