@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ascott1/bigSlide.js.png?branch=master)](https://travis-ci.org/ascott1/bigSlide.js)
+
 bigSlide is a teeny tiny (~1kb compressed) jQuery plugin for creating off-screen slide panel navigation.
 
 It will slide the navigation panel as well as any containers given the `.push` class (or a class of your choosing in the settings).

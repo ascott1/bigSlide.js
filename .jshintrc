@@ -21,6 +21,7 @@
     "predef": [
         "mw",
         "$",
-        "prompt"
+        "prompt",
+        "jQuery"
     ]
 }
