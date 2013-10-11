@@ -28,6 +28,7 @@
 */
 
 (function($) {
+  'use strict';
 
   $.fn.bigSlide = function(options) {
 
