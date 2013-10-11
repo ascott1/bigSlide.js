@@ -22,7 +22,7 @@
 *    \::/  /       \:\__\   \/__/        \::/__/       \:\__\    
 *     \/__/         \/__/                 ~~            \/__/    
 *
-* A tiny slide panel navigation jQuery plugin with big dreams
+* A tiny jQuery plugin for slide panel navigation
 * Created by Adam D. Scott (www.adamdscott.com)
 * You may use bigSlide.js under the terms of the MIT License.
 */
