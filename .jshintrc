@@ -8,7 +8,7 @@
     "noempty": true,
     "nonew": true,
     "strict": true,
-    "trailing": true,
+    "trailing": false,
     "undef": true,
     "unused": true,
     "quotmark": "single",
