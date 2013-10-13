@@ -1,8 +1,5 @@
 language: node_js
 node_js:
   - "0.10"
-before_script:
-  - "git submodule update --init"
-  - "npm install -g jshint"
-script:
-  - "jshint ."
+install: "npm -g install jshint"
+script: "jshint ."
