@@ -1,20 +1,143 @@
+/*
+Global Styles
+======================================
+*/
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #101820;
-    line-height: 1.5;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #101820;
+  line-height: 1.5;
+  color: #101820;
 }
+
+/*
+Layout
+======================================
+*/
 
 .wrap {
-    position: relative;
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
+/*
+Typography
+======================================
+*/
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+/*
+Masthead
+======================================
+*/
+
+.masthead {
+  background: #34495D;
+  color: #fff;
+  position: relative;
+}
+
+.menu-link {
+  position: absolute;
+  font-size: 1.5em;
+}
+
+.menu-link:link,
+.menu-link:visited {
+  color: #fff;
+}
+
+.menu-link:hover,
+.menu-link:active {
+  color: #25B89A;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.125em;
+  margin: .5em 0;
+}
+
+.btn-list {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.btn-list li {
+  display: inline-block;
+}
+
+.btn-list li:first-of-type {
+  margin-right: 1em;
+}
+
+.btn {
+  padding: 1em .5em;
+  text-align: center;
+}
+
+.btn:link,
+.btn:visited {
+  background: #25B89A;
+  color: #fff;
+}
+
+.btn:hover,
+.btn:active {
+  background: #16a085;
+}
+
+/*
+Nav Panel
+======================================
+*/
 
 .panel {
-    background: #101820;
+  background: #2C3E50;
+  z-index: 9999;
 }
 
-.panel a {
-    color: #fff;
+.panel ul {
+  border-top: 2px solid #34495D;
+}
+
+.panel li {
+  border-bottom: 2px solid #34495D;
+  padding: 1em;
+}
+
+.panel a:link,
+.panel a:visited {
+  color: #fff;
 }
