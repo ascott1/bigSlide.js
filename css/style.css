@@ -183,6 +183,9 @@ Nav Panel
 .panel {
   background: #2C3E50;
   z-index: 9999;
+  position: fixed;
+  left: -15.625em; /*or width of your navigation panel*/
+  width: 15.625em; /*should match the above value*/
 }
 
 .panel ul {
