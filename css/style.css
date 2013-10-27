@@ -40,6 +40,7 @@ h1 {
 
 h2 {
   font-size: 2em;
+  margin: 1.2em 0 0 0;
 }
 
 ul,
@@ -55,6 +56,61 @@ li {
 a {
   text-decoration: none;
   transition: 0.2s ease;
+}
+
+a:link,
+a:visited {
+  color: #25B89A;
+}
+
+a:hover,
+a:active {
+  color: #16a085;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
+/*
+code
+-----------------------------------
+*/
+
+pre {
+  background-color: #ECF0F1;
+  padding: 1em;
+  font-size: .875em;
+}
+
+/*
+table
+-------------------------------------
+*/
+
+table {
+  text-align: left;
+  border: 1px solid #95A5A6;
+}
+
+td,
+th {
+  padding: .5em 1em;
+}
+
+th {
+  background: #2C3E50;
+  color: #fff;
+}
+
+td {
+  border: 1px solid #BDC3C7;
+}
+
+tr:nth-of-type(2n) {
+  background: #ECF0F1;
 }
 
 /*
@@ -132,7 +188,8 @@ Nav Panel
   border-top: 2px solid #34495D;
 }
 
-.panel li {
+.panel a {
+  display: block;
   border-bottom: 2px solid #34495D;
   padding: 1em;
 }
@@ -141,3 +198,24 @@ Nav Panel
 .panel a:visited {
   color: #fff;
 }
+
+.panel a:hover,
+.panel a:active {
+  background: #25B89A;
+}
+
+/*
+code
+-----------------------------------
+*/
+
+pre {
+  background-color: #ECF0F1;
+  padding: 1em;
+  font-size: .875em;
+}
+
+/*
+table
+-------------------------------------
+*/
