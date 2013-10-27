@@ -1,0 +1,13 @@
+{
+  "name": "bigSlide Demo",
+  "version": "0.1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~1.9.1",
+    "normalize-css": "~2.1.3"
+  }
+}
