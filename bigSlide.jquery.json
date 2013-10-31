@@ -22,5 +22,5 @@
   "dependencies": {
     "jquery": "*"
   },
-  "keywords": ["navigation", "menu"]
+  "keywords": ["navigation", "menu", "ui"]
 }
