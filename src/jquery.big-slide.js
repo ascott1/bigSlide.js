@@ -62,30 +62,33 @@
     };
 
     menu.css(positionOffScreen);
+    menu.css(animateSlide);
+    push.css(animateSlide);
 
-    menuLink.on('click.bigSlide', function() {
+    menu._state = 'closed';
 
-      menu.css(animateSlide);
-      push.css(animateSlide);
+    menu.open = function() {
+      menu._state = 'open';
+      menu.css('left', '0');
+      push.css('left', width);
+    };
 
-      menu.toggleClass('slide');
-      push.toggleClass('slide');
+    menu.close = function() {
+      menu._state = 'closed';
+      menu.css('left', '-' + width);
+      push.css('left', '0');
+    };
 
-      if (menu.hasClass('slide') === true) {
-        menu.css('left', '0');
+    menuLink.on('click.bigSlide', function(e) {
+      e.preventDefault();
+      if (menu._state === 'closed') {
+        menu.open();
       } else {
-        menu.css('left', '-' + width);
+        menu.close();
       }
-
-      if (push.hasClass('slide') === true) {
-        push.css('left', width);
-      } else {
-        push.css('left', '0');
-      }
-
-
-      return false;
     });
+
+    return menu;
 
   };
 
