@@ -1,5 +1,5 @@
-/*! bigSlide - v0.1.0-alpha - 2013-10-27
-* https://github.com/ascott1/bigSlide.js
+/*! bigSlide - v0.2.1 - 2013-11-13
+* http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2013 Adam D. Scott; Licensed MIT */
 (function($) {
   'use strict';
@@ -36,30 +36,33 @@
     };
 
     menu.css(positionOffScreen);
+    menu.css(animateSlide);
+    push.css(animateSlide);
 
-    menuLink.on('click.bigSlide', function() {
+    menu.state = 'closed';
 
-      menu.css(animateSlide);
-      push.css(animateSlide);
+    menu.open = function() {
+      menu.state = 'open';
+      menu.css('left', '0');
+      push.css('left', width);
+    };
 
-      menu.toggleClass('slide');
-      push.toggleClass('slide');
+    menu.close = function() {
+      menu.state = 'closed';
+      menu.css('left', '-' + width);
+      push.css('left', '0');
+    };
 
-      if (menu.hasClass('slide') === true) {
-        menu.css('left', '0');
+    menuLink.on('click.bigSlide', function(e) {
+      e.preventDefault();
+      if (menu.state === 'closed') {
+        menu.open();
       } else {
-        menu.css('left', '-' + width);
+        menu.close();
       }
-
-      if (push.hasClass('slide') === true) {
-        push.css('left', width);
-      } else {
-        push.css('left', '0');
-      }
-
-
-      return false;
     });
+
+    return menu;
 
   };
 
