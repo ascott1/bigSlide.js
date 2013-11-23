@@ -4,6 +4,20 @@ bigSlide is a teeny tiny (~1kb compressed) jQuery plugin for creating off-screen
 
 It will slide the navigation panel as well as any containers given the `.push` class (or a class of your choosing in the settings).
 
+## Installation
+
+Download the [minified](https://github.com/ascott1/bigSlide.js/blob/master/dist/bigSlide.min.js) or [unminified](https://github.com/ascott1/bigSlide.js/blob/master/dist/bigSlide.js) source.
+
+### Using Bower?
+
+Me too (high five)! bigSlide is available as a Bower package. Simply run:
+
+```
+bower install bigSlide
+```
+
+
+
 ## Getting Started
 
 In your document, include a link to toggle the navigation:
