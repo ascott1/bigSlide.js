@@ -35,6 +35,7 @@
     var settings = $.extend({
       'menu': ('#menu'),
       'push': ('.push'),
+      'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300'
     }, options);
@@ -48,17 +49,17 @@
       'position': 'fixed',
       'top': '0',
       'bottom': '0',
-      'left': '-' + settings.menuWidth,
+      'settings.side': '-' + settings.menuWidth,
       'width': settings.menuWidth,
       'height': '100%'
     };
 
     var animateSlide = {
-      '-webkit-transition': 'left ' + settings.speed + 'ms ease',
-      '-moz-transition': 'left ' + settings.speed + 'ms ease',
-      '-ms-transition': 'left ' + settings.speed + 'ms ease',
-      '-o-transition': 'left ' + settings.speed + 'ms ease',
-      'transition': 'left ' + settings.speed + 'ms ease'
+      '-webkit-transition': settings.side + ' ' + settings.speed + 'ms ease',
+      '-moz-transition': settings.side + ' ' + settings.speed + 'ms ease',
+      '-ms-transition': settings.side + ' ' + settings.speed + 'ms ease',
+      '-o-transition': settings.side + ' ' + settings.speed + 'ms ease',
+      'transition': settings.side + ' ' + settings.speed + 'ms ease'
     };
 
     menu.css(positionOffScreen);
@@ -69,14 +70,14 @@
 
     menu.open = function() {
       menu._state = 'open';
-      menu.css('left', '0');
-      push.css('left', width);
+      menu.css(settings.side, '0');
+      push.css(settings.side, width);
     };
 
     menu.close = function() {
       menu._state = 'closed';
-      menu.css('left', '-' + width);
-      push.css('left', '0');
+      menu.css(settings.side, '-' + width);
+      push.css(settings.side, '0');
     };
 
     menuLink.on('click.bigSlide', function(e) {

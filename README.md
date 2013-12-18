@@ -58,6 +58,7 @@ To initialize the plugin,:
 | ---------- |:-------------:| -----------------:|
 | menu       | ('#menu')     | The attribute ID of the navigation menu |
 | push       | ('.push')     | The class given to additional elements to 'push' when the nav is toggled  |
+| side       | left          | The side of the navigation menu (either 'right' or 'left') |
 | menuWidth  | 15.6em        | The width of the navigation menu |
 | speed      | 300           | The speed (in milliseconds) of the navigation menu    |
 
@@ -67,7 +68,7 @@ Although bigSlide will automatically position your menu off screen, I recommend 
 
 	.panel {
 		position: fixed;
-		left: -15.625em; /*or width of your navigation panel*/
+		left: -15.625em; /*right or left and the width of your navigation panel*/
 		width: 15.625em; /*should match the above value*/
 	}
 	
