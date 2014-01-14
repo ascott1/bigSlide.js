@@ -89,6 +89,12 @@
       }
     });
 
+    // Adds support for a Touch, which in turn fires the click
+    menuLink.on('touchend', function(e){
+      menuLink.trigger('click.bigSlide');
+      e.preventDefault();
+    })
+
     return menu;
 
   };
