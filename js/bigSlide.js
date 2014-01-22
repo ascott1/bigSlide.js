@@ -1,6 +1,6 @@
-/*! bigSlide - v0.4.0 - 2013-12-18
+/*! bigSlide - v0.4.0 - 2014-01-22
 * http://ascott1.github.io/bigSlide.js/
-* Copyright (c) 2013 Adam D. Scott; Licensed MIT */
+* Copyright (c) 2014 Adam D. Scott; Licensed MIT */
 (function($) {
   'use strict';
 
@@ -37,6 +37,7 @@
     };
 
     menu.css(positionOffScreen);
+    push.css(settings.side, '0');
     menu.css(animateSlide);
     push.css(animateSlide);
 
@@ -62,6 +63,11 @@
         menu.close();
       }
     });
+
+    menuLink.on('touchend', function(e){
+      menuLink.trigger('click.bigSlide');
+      e.preventDefault();
+    })
 
     return menu;
 
