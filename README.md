@@ -71,7 +71,13 @@ Although bigSlide will automatically position your menu off screen, I recommend 
 		left: -15.625em; /*right or left and the width of your navigation panel*/
 		width: 15.625em; /*should match the above value*/
 	}
-	
+
+Additionally, any elements that use the `.push` class should be relatively positioned:
+
+  .wrap {
+    position: relative;
+  }
+
 ## License
 
 The MIT License (MIT)
