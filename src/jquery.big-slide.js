@@ -63,6 +63,7 @@
     };
 
     menu.css(positionOffScreen);
+    push.css(settings.side, '0');
     menu.css(animateSlide);
     push.css(animateSlide);
 
