@@ -89,6 +89,11 @@
       }
     });
 
+    menuLink.on('touchend', function(e){
+      menuLink.trigger('click.bigSlide');
+      e.preventDefault();
+    })
+
     return menu;
 
   };
