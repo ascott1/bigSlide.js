@@ -1,6 +1,6 @@
 {
   "name": "bigSlide.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "main": "jquery.big-slide.js",
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
