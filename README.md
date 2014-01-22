@@ -74,9 +74,11 @@ Although bigSlide will automatically position your menu off screen, I recommend 
 
 Additionally, any elements that use the `.push` class should be relatively positioned:
 
-  .wrap {
-    position: relative;
-  }
+```
+.wrap {
+  position: relative;
+}
+```
 
 ## License
 
