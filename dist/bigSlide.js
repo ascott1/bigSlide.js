@@ -23,7 +23,6 @@
       'position': 'fixed',
       'top': '0',
       'bottom': '0',
-      'settings.side': '-' + settings.menuWidth,
       'width': settings.menuWidth,
       'height': '100%'
     };
@@ -37,6 +36,7 @@
     };
 
     menu.css(positionOffScreen);
+    menu.css(settings.side, '-' + settings.menuWidth);
     push.css(settings.side, '0');
     menu.css(animateSlide);
     push.css(animateSlide);
