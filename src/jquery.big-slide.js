@@ -1,31 +1,6 @@
-/*
-*
-*     /\  \          ___        /\  \
-*    /::\  \        /\  \      /::\  \
-*   /:/\:\  \       \:\  \    /:/\:\  \
-*  /::\~\:\__\      /::\__\  /:/  \:\  \
-* /:/\:\ \:|__|  __/:/\/__/ /:/__/_\:\__\
-* \:\~\:\/:/  / /\/:/  /    \:\  /\ \/__/
-*  \:\ \::/  /  \::/__/      \:\ \:\__\
-*   \:\/:/  /    \:\__\       \:\/:/  /
-*    \::/__/      \/__/        \::/  /
-*     ~~                        \/__/
-*      ___           ___                   ___           ___
-*     /\  \         /\__\      ___        /\  \         /\  \
-*    /::\  \       /:/  /     /\  \      /::\  \       /::\  \
-*   /:/\ \  \     /:/  /      \:\  \    /:/\:\  \     /:/\:\  \
-*  _\:\~\ \  \   /:/  /       /::\__\  /:/  \:\__\   /::\~\:\  \
-* /\ \:\ \ \__\ /:/__/     __/:/\/__/ /:/__/ \:|__| /:/\:\ \:\__\
-* \:\ \:\ \/__/ \:\  \    /\/:/  /    \:\  \ /:/  / \:\~\:\ \/__/
-*  \:\ \:\__\    \:\  \   \::/__/      \:\  /:/  /   \:\ \:\__\
-*   \:\/:/  /     \:\  \   \:\__\       \:\/:/  /     \:\ \/__/
-*    \::/  /       \:\__\   \/__/        \::/__/       \:\__\
-*     \/__/         \/__/                 ~~            \/__/
-*
-* A tiny jQuery plugin for slide panel navigation
-* Created by Adam D. Scott (www.adamdscott.com)
-* You may use bigSlide.js under the terms of the MIT License.
-*/
+/*! bigSlide - v0.4.3 - 2014-01-25
+* http://ascott1.github.io/bigSlide.js/
+* Copyright (c) 2014 Adam D. Scott; Licensed MIT */
 
 (function($) {
   'use strict';
@@ -37,12 +12,14 @@
       'push': ('.push'),
       'side': 'left',
       'menuWidth': '15.625em',
-      'speed': '300'
+      'speed': '300',
+      'activeBtn':'menu-open'
     }, options);
 
     var menuLink = this,
         menu = $(settings.menu),
         push = $(settings.push),
+        activeBtn = $(settings.activeBtn),
         width = settings.menuWidth;
 
     var positionOffScreen = {
@@ -73,12 +50,14 @@
       menu._state = 'open';
       menu.css(settings.side, '0');
       push.css(settings.side, width);
+      menuLink.addClass(settings.activeBtn, activeBtn);
     };
 
     menu.close = function() {
       menu._state = 'closed';
       menu.css(settings.side, '-' + width);
       push.css(settings.side, '0');
+      menuLink.removeClass(settings.activeBtn);
     };
 
     menuLink.on('click.bigSlide', function(e) {
