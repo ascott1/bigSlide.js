@@ -50,7 +50,7 @@
       menu._state = 'open';
       menu.css(settings.side, '0');
       push.css(settings.side, width);
-      menuLink.addClass(settings.activeBtn, activeBtn);
+      menuLink.addClass(settings.activeBtn);
     };
 
     menu.close = function() {
