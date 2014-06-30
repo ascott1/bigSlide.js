@@ -60,6 +60,13 @@
       menuLink.removeClass(settings.activeBtn);
     };
 
+   $(document).on('click.bigSlide', function(e) {
+     if (!$(e.target).parents().andSelf().is(menuLink) && menu._state === 'open')  {
+       menu.close();
+       menuLink.removeClass(settings.activeBtn);
+     }
+    });
+
     menuLink.on('click.bigSlide', function(e) {
       e.preventDefault();
       if (menu._state === 'closed') {
