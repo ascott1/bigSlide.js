@@ -19,7 +19,6 @@
     var menuLink = this,
         menu = $(settings.menu),
         push = $(settings.push),
-        activeBtn = $(settings.activeBtn),
         width = settings.menuWidth;
 
     var positionOffScreen = {
