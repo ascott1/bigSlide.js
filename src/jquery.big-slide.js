@@ -2,6 +2,8 @@
   'use strict';
 
   $.fn.bigSlide = function(options) {
+    // store the menuLink in a way that is globally accessible
+    var menuLink = this;
 
     // plugin settings
     var settings = $.extend({
@@ -72,7 +74,7 @@
         this.$push.css(animateSlide);
 
         // register a click listener for desktop & touchstart for mobile
-        $(document).on('click.bigSlide touchstart.bigSlide', function(e) {
+        menuLink.on('click.bigSlide touchstart.bigSlide', function(e) {
           e.preventDefault();
           if (controller.getState() === 'open') {
             view.toggleClose();
