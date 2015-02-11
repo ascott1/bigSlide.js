@@ -80,7 +80,6 @@ For manual access to the open and close functions as well as the current state, 
 | ---------- |:-------------:| -----------------:|
 | menu       | ('#menu')     | The attribute ID of the navigation menu |
 | push       | ('.push')     | The class given to additional elements to 'push' when the nav is toggled  |
-| activeBtn   | ('.menu-open')| The class given to menu button |
 | side       | left          | The side of the navigation menu (either 'right' or 'left') |
 | menuWidth  | 15.6em        | The width of the navigation menu |
 | speed      | 300           | The speed (in milliseconds) of the navigation menu    |

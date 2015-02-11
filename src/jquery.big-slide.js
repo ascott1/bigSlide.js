@@ -10,7 +10,6 @@
       'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300',
-      'activeBtn':'menu-open',
       'state': 'closed'
     }, options);
 
