@@ -71,8 +71,8 @@
         this.$menu.css(animateSlide);
         this.$push.css(animateSlide);
 
-        // register a click listener & touchend for mobile
-        $(document).on('click.bigSlide', function(e) {
+        // register a click listener for desktop & touchstart for mobile
+        $(document).on('click.bigSlide touchstart.bigSlide', function(e) {
           e.preventDefault();
           if (controller.getState() === 'open') {
             view.toggleClose();
@@ -80,7 +80,6 @@
             view.toggleOpen();
           }
         });
-
       },
 
       // toggle the menu open
