@@ -1,10 +1,6 @@
 /*! bigSlide - v0.5.1 - 2015-02-10
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
-/*! bigSlide - v0.4.3 - 2014-01-25
-* http://ascott1.github.io/bigSlide.js/
-* Copyright (c) 2014 Adam D. Scott; Licensed MIT */
-
 (function($) {
   'use strict';
 
@@ -47,11 +43,11 @@
 
     var view = {
       init: function(){
-        this.$menu = $(settings.menu),
-        this.$push = $(settings.push),
+        this.$menu = $(settings.menu);
+        this.$push = $(settings.push);
         this.width = settings.menuWidth;
 
-        var = positionOffScreen = {
+        var positionOffScreen = {
           'position': 'fixed',
           'top': '0',
           'bottom': '0',
@@ -60,7 +56,7 @@
           'height': '100%'
         };
 
-        var = animateSlide = {
+        var animateSlide = {
           '-webkit-transition': settings.side + ' ' + settings.speed + 'ms ease',
           '-moz-transition': settings.side + ' ' + settings.speed + 'ms ease',
           '-ms-transition': settings.side + ' ' + settings.speed + 'ms ease',
@@ -68,14 +64,15 @@
           'transition': settings.side + ' ' + settings.speed + 'ms ease'
         };
 
-        this.menu.css(positionOffScreen);
-        this.push.css(settings.side, '0');
-        this.menu.css(animateSlide);
-        this.push.css(animateSlide);
+        this.$menu.css(positionOffScreen);
+        this.$push.css(settings.side, '0');
+        this.$menu.css(animateSlide);
+        this.$push.css(animateSlide);
 
         // register a click listener & touchend for mobile
 
         $(document).on('click.bigSlide', function(e) {
+          e.preventDefault();
           if (controller.getState() === 'open') {
             view.toggleClose();
           } else {
@@ -88,13 +85,13 @@
       toggleOpen: function() {
         controller.changeState();
         this.$menu.css(settings.side, '0');
-        this.$push.css(settings.side, width);
+        this.$push.css(settings.side, this.width);
         //menuLink.addClass(settings.activeBtn);
       },
 
       toggleClose: function() {
         controller.changeState();
-        this.$menu.css(settings.side, '-' + width);
+        this.$menu.css(settings.side, '-' + this.width);
         this.$push.css(settings.side, '0');
         //menuLink.removeClass(settings.activeBtn);
       }
