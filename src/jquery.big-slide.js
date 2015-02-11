@@ -7,80 +7,98 @@
 
   $.fn.bigSlide = function(options) {
 
+    // plugin settings
     var settings = $.extend({
       'menu': ('#menu'),
       'push': ('.push'),
       'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300',
-      'activeBtn':'menu-open'
+      'activeBtn':'menu-open',
+      'state': 'closed'
     }, options);
 
-    var menuLink = this,
-        menu = $(settings.menu),
-        push = $(settings.push),
-        width = settings.menuWidth;
-
-    var positionOffScreen = {
-      'position': 'fixed',
-      'top': '0',
-      'bottom': '0',
-      'settings.side': '-' + settings.menuWidth,
-      'width': settings.menuWidth,
-      'height': '100%'
+    // store the menu's state in the model
+    var model = {
+      'state': settings.state
     };
 
-    var animateSlide = {
-      '-webkit-transition': settings.side + ' ' + settings.speed + 'ms ease',
-      '-moz-transition': settings.side + ' ' + settings.speed + 'ms ease',
-      '-ms-transition': settings.side + ' ' + settings.speed + 'ms ease',
-      '-o-transition': settings.side + ' ' + settings.speed + 'ms ease',
-      'transition': settings.side + ' ' + settings.speed + 'ms ease'
-    };
+    var controller = {
+      init: function(){
+        view.init();
+      },
 
-    menu.css(positionOffScreen);
-    push.css(settings.side, '0');
-    menu.css(animateSlide);
-    push.css(animateSlide);
+      changeState: function(){
+        //model.state === 'closed' ? model.state = 'open' : model.state = 'closed';
+        if (model.state === 'closed') {
+          model.state = 'open'
+        } else {
+          model.state = 'closed'
+        }
+      },
 
-    menu._state = 'closed';
-
-    menu.open = function() {
-      menu._state = 'open';
-      menu.css(settings.side, '0');
-      push.css(settings.side, width);
-      menuLink.addClass(settings.activeBtn);
-    };
-
-    menu.close = function() {
-      menu._state = 'closed';
-      menu.css(settings.side, '-' + width);
-      push.css(settings.side, '0');
-      menuLink.removeClass(settings.activeBtn);
-    };
-
-   $(document).on('click.bigSlide', function(e) {
-     if (!$(e.target).parents().andSelf().is(menuLink) && menu._state === 'open')  {
-       menu.close();
-       menuLink.removeClass(settings.activeBtn);
-     }
-    });
-
-    menuLink.on('click.bigSlide', function(e) {
-      e.preventDefault();
-      if (menu._state === 'closed') {
-        menu.open();
-      } else {
-        menu.close();
+      getState: function(){
+        return model.state;
       }
-    });
+    };
 
-    menuLink.on('touchend', function(e){
-      menuLink.trigger('click.bigSlide');
-      e.preventDefault();
-    });
+    var view = {
+      init: function(){
+        this.$menu = $(settings.menu),
+        this.$push = $(settings.push),
+        this.width = settings.menuWidth;
 
-    return menu;
+        var = positionOffScreen = {
+          'position': 'fixed',
+          'top': '0',
+          'bottom': '0',
+          'settings.side': '-' + settings.menuWidth,
+          'width': settings.menuWidth,
+          'height': '100%'
+        };
+
+        var = animateSlide = {
+          '-webkit-transition': settings.side + ' ' + settings.speed + 'ms ease',
+          '-moz-transition': settings.side + ' ' + settings.speed + 'ms ease',
+          '-ms-transition': settings.side + ' ' + settings.speed + 'ms ease',
+          '-o-transition': settings.side + ' ' + settings.speed + 'ms ease',
+          'transition': settings.side + ' ' + settings.speed + 'ms ease'
+        };
+
+        this.menu.css(positionOffScreen);
+        this.push.css(settings.side, '0');
+        this.menu.css(animateSlide);
+        this.push.css(animateSlide);
+
+        // register a click listener & touchend for mobile
+
+        $(document).on('click.bigSlide', function(e) {
+          if (controller.getState() === 'open') {
+            view.toggleClose();
+          } else {
+            view.toggleOpen();
+          }
+        });
+
+      },
+
+      toggleOpen: function() {
+        controller.changeState();
+        this.$menu.css(settings.side, '0');
+        this.$push.css(settings.side, width);
+        //menuLink.addClass(settings.activeBtn);
+      },
+
+      toggleClose: function() {
+        controller.changeState();
+        this.$menu.css(settings.side, '-' + width);
+        this.$push.css(settings.side, '0');
+        //menuLink.removeClass(settings.activeBtn);
+      }
+
+    }
+
+    controller.init();
 
   };
 
