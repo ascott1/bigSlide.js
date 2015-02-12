@@ -42,6 +42,18 @@ module.exports = function(grunt) {
         src: ['src/**/*.js']
       },
     },
+    jasmine: {
+      test: {
+        src: 'src/*.js',
+        options: {
+          vendor: [
+            'node_modules/jquery/dist/jquery.js',
+            'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
+          ],
+          specs: 'test/*.spec.js'
+        }
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -58,10 +70,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', 'concat', 'uglify']);
-
+  grunt.registerTask('default', ['jshint', 'jasmine', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('test', ['jshint', 'jasmine']);
 };
