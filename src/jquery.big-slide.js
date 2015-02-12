@@ -27,7 +27,6 @@
       },
       // update the menu's state
       changeState: function(){
-        //model.state === 'closed' ? model.state = 'open' : model.state = 'closed';
         if (model.state === 'closed') {
           model.state = 'open'
         } else {
@@ -53,10 +52,18 @@
           'position': 'fixed',
           'top': '0',
           'bottom': '0',
-          'settings.side': '-' + settings.menuWidth,
-          'width': settings.menuWidth,
           'height': '100%'
         };
+
+        // manually add the settings values
+        positionOffScreen[settings.side] = '-' + settings.menuWidth;
+        positionOffScreen.width = settings.menuWidth;
+
+        // add the css values to position things offscreen
+        if (settings.state === 'closed') {
+          this.$menu.css(positionOffScreen);
+          this.$push.css(settings.side, '0');
+        }
 
         // css for the sliding animation
         var animateSlide = {
@@ -67,9 +74,7 @@
           'transition': settings.side + ' ' + settings.speed + 'ms ease'
         };
 
-        // add the css values to the menu and 'push' class
-        this.$menu.css(positionOffScreen);
-        this.$push.css(settings.side, '0');
+        // add the animation css
         this.$menu.css(animateSlide);
         this.$push.css(animateSlide);
 

@@ -5,7 +5,6 @@ describe('bigSlide default states', function() {
 
   beforeEach(function() {
     loadFixtures('test.html');
-    $('.menu-link').bigSlide();
     $menu = $('#menu');
   });
 
