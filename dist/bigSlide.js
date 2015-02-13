@@ -1,4 +1,4 @@
-/*! bigSlide - v0.6.1 - 2015-02-12
+/*! bigSlide - v0.7.0 - 2015-02-12
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
 (function($) {
@@ -15,7 +15,8 @@
       'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300',
-      'state': 'closed'
+      'state': 'closed',
+      'easyClose': false
     }, options);
 
     // store the menu's state in the model
@@ -90,6 +91,15 @@
             view.toggleOpen();
           }
         });
+
+        // this makes my eyes blead, but adding it back in as it's a highly requested feature
+        if (settings.easyClose) {
+          $('body').on('click.bigSlide', function(e) {
+           if (!$(e.target).parents().andSelf().is(menuLink) && controller.getState() === 'open')  {
+             view.toggleClose();
+           }
+          });
+        }
       },
 
       // toggle the menu open
