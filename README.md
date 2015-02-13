@@ -83,7 +83,7 @@ For manual access to the open and close functions as well as the current state, 
 | side       | left          | The side of the navigation menu (either 'right' or 'left') |
 | menuWidth  | 15.6em        | The width of the navigation menu |
 | speed      | 300           | The speed (in milliseconds) of the navigation menu    |
-
+| easyClose  | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
 
 ## Other notes
 

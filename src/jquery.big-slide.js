@@ -12,7 +12,8 @@
       'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300',
-      'state': 'closed'
+      'state': 'closed',
+      'easyClose': false
     }, options);
 
     // store the menu's state in the model
@@ -87,6 +88,15 @@
             view.toggleOpen();
           }
         });
+
+        // this makes my eyes blead, but adding it back in as it's a highly requested feature
+        if (settings.easyClose) {
+          $('body').on('click.bigSlide', function(e) {
+           if (!$(e.target).parents().andSelf().is(menuLink) && controller.getState() === 'open')  {
+             view.toggleClose();
+           }
+          });
+        }
       },
 
       // toggle the menu open
