@@ -3,7 +3,7 @@
 
   $.fn.bigSlide = function(options) {
     // store the menuLink in a way that is globally accessible
-    var menuLink = this;
+    var menuLink = this, pub;
 
     // plugin settings
     var settings = $.extend({
@@ -119,8 +119,10 @@
 
     controller.init();
     
+    pub = {model:model, view:view, controller:controller, settings:settings};
+    
     // allow public access to the bigSlide components
-    menuLink.data('bigSlide', {model:model, view:view, controller:controller, settings:settings});
+    menuLink.data('bigSlide', pub);
     return this;
   };
 
