@@ -120,7 +120,7 @@
     controller.init();
     
     // allow public access to the bigSlide components
-    menuLink.data('bigSlide', {model:model, view:view, controller:controller});
+    menuLink.data('bigSlide', {model:model, view:view, controller:controller, settings:settings});
     return this;
   };
 
