@@ -52,28 +52,6 @@ To initialize the plugin,:
     });
     </script>
 
-
-For manual access to the open and close functions as well as the current state, initialize like this:
-
-	<script>
-    $(document).ready(function() {
-    	//initialize
-        var bigSlide = $('.menu-link').bigSlide();
-        
-        //jquery example for usage of menu functions and state:
-        $('.custom-menu-button').on('click', function(){
-	        if (bigSlide._state === 'open'){
-	           bigSlide.close();	
-	        }
-	        else {
-	           bigSlide.open();	
-	        }
-        });
-        
-    });
-    </script>
-
-
 ## Options
 
 | Variable   | Default Value | Description       |
