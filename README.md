@@ -84,6 +84,7 @@ For manual access to the open and close functions as well as the current state, 
 | menuWidth  | 15.6em        | The width of the navigation menu |
 | speed      | 300           | The speed (in milliseconds) of the navigation menu    |
 | easyClose  | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
+| activeBtn  | active         | This class is added to the menu button when it is open. By default the class is `.active`    |
 
 ## Other notes
 

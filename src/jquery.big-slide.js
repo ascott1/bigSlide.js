@@ -13,6 +13,7 @@
       'menuWidth': '15.625em',
       'speed': '300',
       'state': 'closed',
+      'activeBtn': 'active',
       'easyClose': false
     }, options);
 
@@ -104,7 +105,7 @@
         controller.changeState();
         this.$menu.css(settings.side, '0');
         this.$push.css(settings.side, this.width);
-        //menuLink.addClass(settings.activeBtn);
+        menuLink.addClass(settings.activeBtn);
       },
 
       // toggle the menu closed
@@ -112,7 +113,7 @@
         controller.changeState();
         this.$menu.css(settings.side, '-' + this.width);
         this.$push.css(settings.side, '0');
-        //menuLink.removeClass(settings.activeBtn);
+        menuLink.removeClass(settings.activeBtn);
       }
 
     }
