@@ -1,10 +1,27 @@
 {
   "name": "bigSlide.js",
   "version": "0.7.1",
-  "main": "jquery.big-slide.js",
+  "description": "A tiny slide panel navigation jQuery plugin with big dreams",
+  "author": "Adam D. Scott <hello@adamdscott.com>",
+  "main": "dist/jquery.big-slide.js",
   "scripts": {
     "test": "grunt test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ascott1/bigSlide.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ascott1/bigSlide.js/issues"
+  },
+  "keywords": [
+    "jquery",
+    "jquery-plugin",
+    "browser",
+    "menu",
+    "navigation",
+    "slide-panel"
+  ],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.0",
