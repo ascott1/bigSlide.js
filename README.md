@@ -8,14 +8,19 @@ It will slide the navigation panel as well as any containers given the `.push` c
 
 Download the [minified](https://github.com/ascott1/bigSlide.js/blob/master/dist/bigSlide.min.js) or [unminified](https://github.com/ascott1/bigSlide.js/blob/master/dist/bigSlide.js) source.
 
-### Using Bower?
+### Using npm or Bower?
 
-Me too (high five)! bigSlide is available as a Bower package. Simply run:
+bigSlide is available as noth a npm and Bower package. Simply run:
+
+```
+npm install bigslide
+```
+
+**or**
 
 ```
 bower install bigSlide
 ```
-
 
 
 ## Getting Started
