@@ -9,7 +9,7 @@
     "nonew": true,
     "strict": true,
     "trailing": true,
-    "undef": true,
+    "undef": false,
     "unused": true,
     "quotmark": "single",
     "browser": true,

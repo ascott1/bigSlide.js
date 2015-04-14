@@ -1,7 +1,19 @@
-/*! bigSlide - v0.7.0 - 2015-03-27
+/*! bigSlide - v0.7.1 - 2015-04-14
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
-(function($) {
+(function (factory) {
+  'use strict';
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node/CommonJS
+    module.exports = factory(require('jquery'));
+  } else {
+    // Browser globals
+    factory(jQuery);
+  }
+}(function($) {
   'use strict';
 
   $.fn.bigSlide = function(options) {
@@ -125,4 +137,4 @@
 
   };
 
-}(jQuery));
+}));
