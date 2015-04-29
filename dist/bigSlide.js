@@ -1,4 +1,4 @@
-/*! bigSlide - v0.8.0 - 2015-04-14
+/*! bigSlide - v0.8.0 - 2015-04-28
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
 (function (factory) {
@@ -29,7 +29,11 @@
       'speed': '300',
       'state': 'closed',
       'activeBtn': 'active',
-      'easyClose': false
+      'easyClose': false,
+      'beforeOpen': function () {},
+      'afterOpen': function() {},
+      'beforeClose': function() {},
+      'afterClose': function() {}
     }, options);
 
     // store the menu's state in the model
@@ -117,18 +121,22 @@
 
       // toggle the menu open
       toggleOpen: function() {
+        settings.beforeOpen();
         controller.changeState();
         this.$menu.css(settings.side, '0');
         this.$push.css(settings.side, this.width);
         menuLink.addClass(settings.activeBtn);
+        settings.afterOpen();
       },
 
       // toggle the menu closed
       toggleClose: function() {
+        settings.beforeClose();
         controller.changeState();
         this.$menu.css(settings.side, '-' + this.width);
         this.$push.css(settings.side, '0');
         menuLink.removeClass(settings.activeBtn);
+        settings.afterClose();
       }
 
     }

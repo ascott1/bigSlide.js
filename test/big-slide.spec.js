@@ -34,3 +34,54 @@ describe('bigSlide click states', function() {
   });
 
 });
+
+describe('open and close event callbacks', function() {
+  var callback_value = false;
+
+  beforeEach(function() {
+    loadFixtures('test.html');
+  });
+
+  it('before open should be called', function() {
+    $('.menu-link').bigSlide({
+      'beforeOpen': function() {
+        callback_value = "before-open";
+      }
+    });
+    $('.menu-link').trigger('click');
+    expect(callback_value).toEqual("before-open");
+  });
+
+  it('after open should be called', function() {
+    $('.menu-link').bigSlide({
+      'afterOpen': function() {
+        callback_value = "after-open";
+      }
+    });
+    $('.menu-link').trigger('click');
+    expect(callback_value).toEqual("after-open");
+  });
+
+  it('before close should be called', function() {
+    $('.menu-link').bigSlide({
+      'beforeClose': function() {
+        callback_value = "before-close";
+      }
+    });
+    $('.menu-link').trigger('click');
+    $('.menu-link').trigger('click');
+    expect(callback_value).toEqual("before-close");
+  });
+
+  it('after close should be called', function() {
+    $('.menu-link').bigSlide({
+      'afterClose': function() {
+        callback_value = "after-close";
+      }
+    });
+    $('.menu-link').trigger('click');
+    $('.menu-link').trigger('click');
+    expect(callback_value).toEqual("after-close");
+  });
+
+});
