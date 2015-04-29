@@ -26,7 +26,11 @@
       'speed': '300',
       'state': 'closed',
       'activeBtn': 'active',
-      'easyClose': false
+      'easyClose': false,
+      'beforeOpen': function () {},
+      'afterOpen': function() {},
+      'beforeClose': function() {},
+      'afterClose': function() {}
     }, options);
 
     // store the menu's state in the model
@@ -114,18 +118,22 @@
 
       // toggle the menu open
       toggleOpen: function() {
+        settings.beforeOpen();
         controller.changeState();
         this.$menu.css(settings.side, '0');
         this.$push.css(settings.side, this.width);
         menuLink.addClass(settings.activeBtn);
+        settings.afterOpen();
       },
 
       // toggle the menu closed
       toggleClose: function() {
+        settings.beforeClose();
         controller.changeState();
         this.$menu.css(settings.side, '-' + this.width);
         this.$push.css(settings.side, '0');
         menuLink.removeClass(settings.activeBtn);
+        settings.afterClose();
       }
 
     }

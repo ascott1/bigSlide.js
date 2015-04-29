@@ -28,7 +28,7 @@ bower install bigSlide
 In your document, include a link to toggle the navigation:
 
 	<a href="#menu" class="menu-link">&#9776;</a>
-	
+
 And your nav menu:
 
 	<nav id="menu" class="panel" role="navigation">
@@ -59,15 +59,19 @@ To initialize the plugin,:
 
 ## Options
 
-| Variable   | Default Value | Description       |
-| ---------- |:-------------:| -----------------:|
-| menu       | ('#menu')     | The attribute ID of the navigation menu |
-| push       | ('.push')     | The class given to additional elements to 'push' when the nav is toggled  |
-| side       | left          | The side of the navigation menu (either 'right' or 'left') |
-| menuWidth  | 15.6em        | The width of the navigation menu |
-| speed      | 300           | The speed (in milliseconds) of the navigation menu    |
-| easyClose  | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
-| activeBtn  | active         | This class is added to the menu button when it is open. By default the class is `.active`    |
+| Variable    | Default Value | Description       |
+| ----------- |:-------------:| -----------------:|
+| menu        | ('#menu')     | The attribute ID of the navigation menu |
+| push        | ('.push')     | The class given to additional elements to 'push' when the nav is toggled  |
+| side        | left          | The side of the navigation menu (either 'right' or 'left') |
+| menuWidth   | 15.6em        | The width of the navigation menu |
+| speed       | 300           | The speed (in milliseconds) of the navigation menu    |
+| easyClose   | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
+| activeBtn   | active        | This class is added to the menu button when it is open. By default the class is `.active`    |
+| beforeOpen  | function() {} | A method called before the trigger open event |
+| afterOpen   | function() {} | A method called after the trigger open event |
+| beforeClose | function() {} | A method called before the trigger close event |
+| afterClose  | function() {} | A method called after the trigger close event |
 
 ## Other notes
 
