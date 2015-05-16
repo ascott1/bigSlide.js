@@ -140,6 +140,13 @@
 
     controller.init();
 
+    this.bigSlide                 = {};
+    this.bigSlide.settings        = settings;
+    this.bigSlide.model           = model;
+    this.bigSlide.controller      = controller;
+    this.bigSlide.view            = view;
+
+    return this;
   };
 
 }));
