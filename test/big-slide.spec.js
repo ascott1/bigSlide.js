@@ -85,3 +85,53 @@ describe('open and close event callbacks', function() {
   });
 
 });
+
+describe('exposed internal components', function(){
+  var $menu;
+  var $menuLink;
+
+  beforeEach(function() {
+    loadFixtures('test.html');
+    
+    $menu = $('#menu');
+
+    $menuLink = $('.menu-link').bigSlide({
+      side:'right',
+      menuWidth: '200px'
+    });
+  });
+
+  it('the jQuery object should have a bigSlide property', function(){
+    expect($menuLink.bigSlide).toBeDefined();
+  });
+
+  it('all internal components should be exposed on the bigSlide property', function(){
+    expect($menuLink.bigSlide.settings).toBeDefined();
+    expect($menuLink.bigSlide.model).toBeDefined();
+    expect($menuLink.bigSlide.controller).toBeDefined();
+    expect($menuLink.bigSlide.view).toBeDefined();
+  });
+
+  it('properties of the exposed settings object should have expected values', function(){
+    expect($menuLink.bigSlide.settings.side).toEqual('right');
+    expect($menuLink.bigSlide.settings.menuWidth).toEqual('200px');
+  });
+
+  it('calling view.toggleOpen should open the menu', function(){
+    $menuLink.bigSlide.view.toggleOpen();
+
+    expect($menuLink.bigSlide.model.state).toEqual('open');
+    expect($menu[0].style.right).toBe("0px");
+    expect($menuLink).toHaveClass('active');
+  });
+
+  it('calling view.toggleClose should close the menu', function(){
+    $menuLink.bigSlide.view.toggleOpen();
+    $menuLink.bigSlide.view.toggleClose();
+    
+    expect($menuLink.bigSlide.model.state).toEqual('closed');
+    expect($menu[0].style.right).toBe("-200px");
+    expect($menuLink).not.toHaveClass('active');
+  });
+
+});
