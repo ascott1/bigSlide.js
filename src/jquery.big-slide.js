@@ -140,11 +140,12 @@
 
     controller.init();
 
-    this.bigSlide                 = {};
-    this.bigSlide.settings        = settings;
-    this.bigSlide.model           = model;
-    this.bigSlide.controller      = controller;
-    this.bigSlide.view            = view;
+    this.bigSlide = {
+      settings: settings,
+      model: model,
+      controller: controller,
+      view: view
+    };
 
     return this;
   };
