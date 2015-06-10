@@ -106,7 +106,7 @@
           }
         });
 
-        // this makes my eyes blead, but adding it back in as it's a highly requested feature
+        // this makes my eyes bleed, but adding it back in as it's a highly requested feature
         if (settings.easyClose) {
           $('body').on('click.bigSlide', function(e) {
            if (!$(e.target).parents().andSelf().is(menuLink) && controller.getState() === 'open')  {
