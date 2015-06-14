@@ -96,7 +96,7 @@ describe('exposed internal components', function(){
     $menu = $('#menu');
 
     $menuLink = $('.menu-link').bigSlide({
-      side:'right',
+      side:'left',
       menuWidth: '200px'
     });
   });
@@ -113,7 +113,7 @@ describe('exposed internal components', function(){
   });
 
   it('properties of the exposed settings object should have expected values', function(){
-    expect($menuLink.bigSlideAPI.settings.side).toEqual('right');
+    expect($menuLink.bigSlideAPI.settings.side).toEqual('left');
     expect($menuLink.bigSlideAPI.settings.menuWidth).toEqual('200px');
   });
 
@@ -121,7 +121,7 @@ describe('exposed internal components', function(){
     $menuLink.bigSlideAPI.view.toggleOpen();
 
     expect($menuLink.bigSlideAPI.model.state).toEqual('open');
-    expect($menu[0].style.right).toBe("0px");
+    expect($menu[0].style.left).toBe("0px");
     expect($menuLink).toHaveClass('active');
   });
 
@@ -130,8 +130,53 @@ describe('exposed internal components', function(){
     $menuLink.bigSlideAPI.view.toggleClose();
     
     expect($menuLink.bigSlideAPI.model.state).toEqual('closed');
-    expect($menu[0].style.right).toBe("-200px");
+    expect($menu[0].style.left).toBe("-200px");
     expect($menuLink).not.toHaveClass('active');
   });
 
 });
+
+describe('destroy method', function(){
+  var $menuLink;
+  var $panel;
+  var $push;
+
+  beforeEach(function() {
+    loadFixtures('test.html');
+
+    $panel = $('.panel').css('color', 'blue');    
+    $push = $('.push').css('color', 'red');
+
+    $menuLink = $('.menu-link').bigSlide({
+      side:'left',
+      menuWidth: '200px'
+    });
+
+    $menuLink.trigger('click.bigSlide');
+
+    $menuLink.bigSlideAPI.controller.destroy();
+  });
+
+  it('the jQuery object should not have a bigSlide property', function(){
+    expect($menuLink.bigSlideAPI).not.toBeDefined();
+  });
+
+  it('inline CSS applied by bigSlide should be removed', function(){
+    expect($push[0].style.left).toBe('');
+    expect($panel[0].style.left).toBe('');    
+  });
+
+  it('inline CSS not applied by bigSlide should be preserved', function(){
+    expect($push[0].style.cssText.trim()).toBe('color: red;');
+    expect($panel[0].style.cssText.trim()).toBe('color: blue;');    
+  });
+
+  it('the menu link should not have the active class', function(){
+    expect($menuLink.hasClass('active')).toBe(false);
+  });
+
+  it('no event handlers should be bound to the menu link', function(){
+    expect($._data($menuLink[0], 'events')).toBe(undefined);
+  });
+});
+
