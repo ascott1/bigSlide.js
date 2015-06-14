@@ -140,7 +140,7 @@
 
     controller.init();
 
-    this.bigSlide = {
+    this.bigSlideAPI = {
       settings: settings,
       model: model,
       controller: controller,
