@@ -110,6 +110,7 @@ describe('exposed internal components', function(){
     expect($menuLink.bigSlideAPI.model).toBeDefined();
     expect($menuLink.bigSlideAPI.controller).toBeDefined();
     expect($menuLink.bigSlideAPI.view).toBeDefined();
+    expect($menuLink.bigSlideAPI.destroy).toBeDefined();
   });
 
   it('properties of the exposed settings object should have expected values', function(){
@@ -154,7 +155,7 @@ describe('destroy method', function(){
 
     $menuLink.trigger('click.bigSlide');
 
-    $menuLink.bigSlideAPI.controller.destroy();
+    $menuLink.bigSlideAPI.destroy();
   });
 
   it('the jQuery object should not have a bigSlide property', function(){
