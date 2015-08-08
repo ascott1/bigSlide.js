@@ -153,8 +153,8 @@
 
         // this makes my eyes bleed, but adding it back in as it's a highly requested feature
         if (settings.easyClose) {
-          $('body').on('click.bigSlide', function(e) {
-           if (!$(e.target).parents().andSelf().is(menuLink) && controller.getState() === 'open')  {
+          $(document).on('click.bigSlide', function(e) {
+           if (!$(e.target).parents().andSelf().is(menuLink) && !$(e.target).closest(menu).length && controller.getState() === 'open')  {
              view.toggleClose();
            }
           });
