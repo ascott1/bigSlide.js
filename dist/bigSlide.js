@@ -1,4 +1,4 @@
-/*! bigSlide - v0.9.0 - 2015-06-20
+/*! bigSlide - v0.9.1 - 2015-10-22
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
 (function (factory) {
@@ -157,7 +157,7 @@
         // this makes my eyes bleed, but adding it back in as it's a highly requested feature
         if (settings.easyClose) {
           $(document).on('click.bigSlide', function(e) {
-           if (!$(e.target).parents().andSelf().is(menuLink) && !$(e.target).closest(settings.menu).length &&  controller.getState() === 'open')  {
+           if (!$(e.target).parents().andSelf().is(menuLink) && !$(e.target).closest(settings.menu).length && controller.getState() === 'open')  {
              view.toggleClose();
            }
           });
