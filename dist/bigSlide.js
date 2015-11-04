@@ -1,4 +1,4 @@
-/*! bigSlide - v0.9.2 - 2015-11-04
+/*! bigSlide - v0.9.3 - 2015-11-04
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
 (function (factory) {
