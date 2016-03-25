@@ -52,6 +52,7 @@
       'state': 'closed',
       'activeBtn': 'active',
       'easyClose': false,
+      'saveState': false,
       'beforeOpen': function () {},
       'afterOpen': function() {},
       'beforeClose': function() {},
@@ -96,6 +97,11 @@
         }
       },
 
+      // set the menu's state
+      setState: function(state){
+        model.state = state;
+      },
+
       // check the menu's state
       getState: function(){
         return model.state;
@@ -118,16 +124,6 @@
           'height': '100%'
         };
 
-        // manually add the settings values
-        positionOffScreen[settings.side] = '-' + settings.menuWidth;
-        positionOffScreen.width = settings.menuWidth;
-
-        // add the css values to position things offscreen
-        if (settings.state === 'closed') {
-          this.$menu.css(positionOffScreen);
-          this.$push.css(settings.side, '0');
-        }
-
         // css for the sliding animation
         var animateSlide = {
           '-webkit-transition': settings.side + ' ' + settings.speed + 'ms ease',
@@ -137,12 +133,47 @@
           'transition': settings.side + ' ' + settings.speed + 'ms ease'
         };
 
-        // add the animation css
-        this.$menu.css(animateSlide);
-        this.$push.css(animateSlide);
+        // we want to add the css sliding animation when the page is loaded (on the first menu link click)
+        var animationApplied = false;
+
+        // manually add the settings values
+        positionOffScreen[settings.side] = '-' + settings.menuWidth;
+        positionOffScreen.width = settings.menuWidth;
+
+        // get the initial state based on the last saved state or on the state option
+        var initialState = 'closed';
+        if (settings.saveState) {
+          initialState = localStorage.getItem('bigSlide-savedState');
+          if (!initialState) initialState = settings.state;
+        } else {
+          initialState = settings.state;
+        }
+
+        // set the initial state on the controller
+        controller.setState(initialState);
+
+        // add the css values to position things offscreen or inscreen depending on the initial state value
+        this.$menu.css(positionOffScreen);
+        if (initialState === 'closed') {
+          this.$push.css(settings.side, '0');
+
+        } else if (initialState === 'open') {
+          this.$menu.css(settings.side, '0');
+          this.$push.css(settings.side, this.width);
+          menuLink.addClass(settings.activeBtn);
+        }
+
+        var that = this;
 
         // register a click listener for desktop & touchstart for mobile
         menuLink.on('click.bigSlide touchstart.bigSlide', function(e) {
+          // add the animation css if not present
+          if (!animationApplied) {
+            that.$menu.css(animateSlide);
+            that.$push.css(animateSlide);
+            animationApplied = true;
+          }
+
           e.preventDefault();
           if (controller.getState() === 'open') {
             view.toggleClose();
@@ -181,6 +212,9 @@
         //release DOM references to avoid memory leaks
         this.$menu = null;
         this.$push = null;
+
+        //remove the local storage state
+        localStorage.removeItem('bigSlide-savedState');
       },
 
       // toggle the menu open
@@ -191,6 +225,11 @@
         this.$push.css(settings.side, this.width);
         menuLink.addClass(settings.activeBtn);
         settings.afterOpen();
+
+        // save the state
+        if (settings.saveState) {
+          localStorage.setItem('bigSlide-savedState', 'open');
+        }
       },
 
       // toggle the menu closed
@@ -201,6 +240,11 @@
         this.$push.css(settings.side, '0');
         menuLink.removeClass(settings.activeBtn);
         settings.afterClose();
+
+        // save the state
+        if (settings.saveState) {
+          localStorage.setItem('bigSlide-savedState', 'closed');
+        }
       }
 
     }
