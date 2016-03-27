@@ -65,6 +65,8 @@ To initialize the plugin,:
 | push        | ('.push')     | The class given to additional elements to 'push' when the nav is toggled  |
 | side        | left          | The side of the navigation menu (either 'right' or 'left') |
 | menuWidth   | 15.6em        | The width of the navigation menu |
+| state       | closed        | The default state of the navigation menu (either 'closed' or 'open') |
+| saveState   | false         | Set this to `true` to allow the navigation menu to remember it's previous state when navigating |
 | speed       | 300           | The speed (in milliseconds) of the navigation menu    |
 | easyClose   | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
 | activeBtn   | active        | This class is added to the menu button when it is open. By default the class is `.active`    |
@@ -113,4 +115,3 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
