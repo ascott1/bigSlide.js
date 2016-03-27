@@ -1,4 +1,4 @@
-/*! bigSlide - v0.9.3 - 2016-03-25
+/*! bigSlide - v0.9.4 - 2016-03-27
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2016 Adam D. Scott; Licensed MIT */
 (function (factory) {
@@ -49,6 +49,7 @@
     var settings = $.extend({
       'menu': ('#menu'),
       'push': ('.push'),
+      'shrink': ('.shrink'),
       'side': 'left',
       'menuWidth': '15.625em',
       'speed': '300',
@@ -117,6 +118,7 @@
         // cache DOM values
         this.$menu = $(settings.menu);
         this.$push = $(settings.push);
+        this.$shrink = $(settings.shrink);
         this.width = settings.menuWidth;
 
         // CSS for how the menu will be positioned off screen
@@ -136,6 +138,15 @@
           'transition': settings.side + ' ' + settings.speed + 'ms ease'
         };
 
+        // css for the shrink animation
+        var animateShrink = {
+          '-webkit-transition': 'all ' + settings.speed + 'ms ease',
+          '-moz-transition': 'all ' + settings.speed + 'ms ease',
+          '-ms-transition': 'all ' + settings.speed + 'ms ease',
+          '-o-transition': 'all ' + settings.speed + 'ms ease',
+          'transition': 'all ' + settings.speed + 'ms ease'
+        };
+
         // we want to add the css sliding animation when the page is loaded (on the first menu link click)
         var animationApplied = false;
 
@@ -143,10 +154,11 @@
         positionOffScreen[settings.side] = '-' + settings.menuWidth;
         positionOffScreen.width = settings.menuWidth;
 
-        // get the initial state based on the last saved state and the state option
+        // get the initial state based on the last saved state or on the state option
         var initialState = 'closed';
         if (settings.saveState) {
           initialState = localStorage.getItem('bigSlide-savedState');
+          if (!initialState) initialState = settings.state;
         } else {
           initialState = settings.state;
         }
@@ -162,6 +174,7 @@
         } else if (initialState === 'open') {
           this.$menu.css(settings.side, '0');
           this.$push.css(settings.side, this.width);
+          this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
           menuLink.addClass(settings.activeBtn);
         }
 
@@ -173,6 +186,7 @@
           if (!animationApplied) {
             that.$menu.css(animateSlide);
             that.$push.css(animateSlide);
+            that.$shrink.css(animateShrink);
             animationApplied = true;
           }
 
@@ -206,6 +220,11 @@
           $this.attr( 'style', _cleanInlineCSS($this.attr('style'), model.pushCSSDictionary).trim() );
         });
 
+        this.$shrink.each(function(){
+          var $this = $(this);
+          $this.attr( 'style', _cleanInlineCSS($this.attr('style'), model.pushCSSDictionary).trim() );
+        });
+
         //remove active class and unbind bigSlide event handlers
         menuLink
           .removeClass(settings.activeBtn)
@@ -214,6 +233,7 @@
         //release DOM references to avoid memory leaks
         this.$menu = null;
         this.$push = null;
+        this.$shrink = null;
 
         //remove the local storage state
         localStorage.removeItem('bigSlide-savedState');
@@ -225,6 +245,7 @@
         controller.changeState();
         this.$menu.css(settings.side, '0');
         this.$push.css(settings.side, this.width);
+        this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
         menuLink.addClass(settings.activeBtn);
         settings.afterOpen();
 
@@ -240,6 +261,7 @@
         controller.changeState();
         this.$menu.css(settings.side, '-' + this.width);
         this.$push.css(settings.side, '0');
+        this.$shrink.css('width', '100%');
         menuLink.removeClass(settings.activeBtn);
         settings.afterClose();
 
