@@ -93,6 +93,8 @@ Additionally, any elements that use the `.push` class should be relatively posit
 }
 ```
 
+If you want to shrink the main container div instead of only pushing it with the `.push` class so you can work in the application with the navbar open, the `.shrink` class will do the work.
+
 ## License
 
 The MIT License (MIT)
