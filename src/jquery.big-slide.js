@@ -47,6 +47,7 @@
       'menu': ('#menu'),
       'push': ('.push'),
       'shrink': ('.shrink'),
+      'hiddenThin': ('.hiddenThin'),
       'side': 'left',
       'menuWidth': '15.625em',
       'semiOpenMenuWidth': '4em',
@@ -119,6 +120,7 @@
         this.$menu = $(settings.menu);
         this.$push = $(settings.push);
         this.$shrink = $(settings.shrink);
+        this.$hiddenThin = $(settings.hiddenThin);
         this.width = settings.menuWidth;
         this.semiOpenMenuWidth = settings.semiOpenMenuWidth;
 
@@ -170,8 +172,17 @@
         // add the css values to position things offscreen or inscreen depending on the initial state value
         this.$menu.css(positionOffScreen);
         if (initialState === 'closed') {
-          this.$push.css(settings.side, '0');
-
+          if (settings.semiOpenStatus) {
+            this.$hiddenThin.hide();
+            this.$menu.css(settings.side, '0');
+            this.$menu.css('width', this.semiOpenMenuWidth);
+            this.$push.css(settings.side, this.semiOpenMenuWidth);
+            this.$shrink.css({
+              'width': 'calc(100% - ' + this.semiOpenMenuWidth + ')'
+            });
+          } else {
+            this.$push.css(settings.side, '0');
+          }
         } else if (initialState === 'open') {
           this.$menu.css(settings.side, '0');
           this.$push.css(settings.side, this.width);
@@ -245,8 +256,8 @@
         settings.beforeOpen();
         controller.changeState();
         if (settings.semiOpenStatus) {
-          jQuery('.hiddenThin').show();
-          this.$menu.css('width', this.width);
+          this.$hiddenThin.show();
+          this.$menu.animate({ width: this.width}, {duration: Math.abs(settings.speed - 100), easing: 'linear'});
           this.$push.css(settings.side, this.width);
           this.$shrink.css({
             'width': 'calc(100% - ' + this.width + ')'
@@ -260,9 +271,9 @@
         settings.afterOpen();
 
         // save the state
-        /*if (settings.saveState) {
+        if (settings.saveState) {
           localStorage.setItem('bigSlide-savedState', 'open');
-        }*/
+        }
       },
 
       // toggle the menu closed
@@ -270,8 +281,8 @@
         settings.beforeClose();
         controller.changeState();
         if (settings.semiOpenStatus) {
-          jQuery('.hiddenThin').hide();
-          this.$menu.css('width', this.semiOpenMenuWidth);
+          this.$hiddenThin.hide();
+          this.$menu.animate({ width: this.semiOpenMenuWidth}, {duration: Math.abs(settings.speed - 100), easing: 'linear'});
           this.$push.css(settings.side, this.semiOpenMenuWidth);
           this.$shrink.css({
             'width': 'calc(100% - ' + this.semiOpenMenuWidth + ')'
@@ -285,9 +296,9 @@
         settings.afterClose();
 
         // save the state
-        /*if (settings.saveState) {
+        if (settings.saveState) {
           localStorage.setItem('bigSlide-savedState', 'closed');
-        }*/
+        }
       }
 
     }
