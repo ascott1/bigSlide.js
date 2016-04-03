@@ -1,4 +1,4 @@
-/*! bigSlide - v0.10.0 - 2016-03-30
+/*! bigSlide - v0.10.0 - 2016-04-03
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2016 Adam D. Scott; Licensed MIT */
 (function (factory) {
@@ -52,11 +52,14 @@
       'shrink': ('.shrink'),
       'side': 'left',
       'menuWidth': '15.625em',
+      'semiOpenMenuWidth': '4em',
       'speed': '300',
       'state': 'closed',
       'activeBtn': 'active',
       'easyClose': false,
       'saveState': false,
+      'semiOpenStatus': false,
+      'totalyClosedMenuWidth': 560,
       'beforeOpen': function () {},
       'afterOpen': function() {},
       'beforeClose': function() {},
@@ -120,6 +123,7 @@
         this.$push = $(settings.push);
         this.$shrink = $(settings.shrink);
         this.width = settings.menuWidth;
+        this.semiOpenMenuWidth = settings.semiOpenMenuWidth;
 
         // CSS for how the menu will be positioned off screen
         var positionOffScreen = {
@@ -243,32 +247,50 @@
       toggleOpen: function() {
         settings.beforeOpen();
         controller.changeState();
-        this.$menu.css(settings.side, '0');
-        this.$push.css(settings.side, this.width);
-        this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
+        if (settings.semiOpenStatus) {
+          jQuery('.hiddenThin').show();
+          this.$menu.css('width', this.width);
+          this.$push.css(settings.side, this.width);
+          this.$shrink.css({
+            'width': 'calc(100% - ' + this.width + ')'
+          });
+        } else {
+          this.$menu.css(settings.side, '0');
+          this.$push.css(settings.side, this.width);
+          this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
+        }
         menuLink.addClass(settings.activeBtn);
         settings.afterOpen();
 
         // save the state
-        if (settings.saveState) {
+        /*if (settings.saveState) {
           localStorage.setItem('bigSlide-savedState', 'open');
-        }
+        }*/
       },
 
       // toggle the menu closed
       toggleClose: function() {
         settings.beforeClose();
         controller.changeState();
-        this.$menu.css(settings.side, '-' + this.width);
-        this.$push.css(settings.side, '0');
-        this.$shrink.css('width', '100%');
+        if (settings.semiOpenStatus) {
+          jQuery('.hiddenThin').hide();
+          this.$menu.css('width', this.semiOpenMenuWidth);
+          this.$push.css(settings.side, this.semiOpenMenuWidth);
+          this.$shrink.css({
+            'width': 'calc(100% - ' + this.semiOpenMenuWidth + ')'
+          });
+        } else {
+          this.$menu.css(settings.side, '-' + this.width);
+          this.$push.css(settings.side, '0');
+          this.$shrink.css('width', '100%');
+        }
         menuLink.removeClass(settings.activeBtn);
         settings.afterClose();
 
         // save the state
-        if (settings.saveState) {
+        /*if (settings.saveState) {
           localStorage.setItem('bigSlide-savedState', 'closed');
-        }
+        }*/
       }
 
     }
