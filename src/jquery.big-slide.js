@@ -180,6 +180,7 @@
             this.$shrink.css({
               'width': 'calc(100% - ' + this.semiOpenMenuWidth + ')'
             });
+            this.$menu.addClass('semiOpen');
           } else {
             this.$push.css(settings.side, '0');
           }
@@ -264,6 +265,7 @@
           this.$shrink.css({
             'width': 'calc(100% - ' + this.width + ')'
           });
+          this.$menu.removeClass('semiOpen');
         } else {
           this.$menu.css(settings.side, '0');
           this.$push.css(settings.side, this.width);
@@ -289,6 +291,7 @@
           this.$shrink.css({
             'width': 'calc(100% - ' + this.semiOpenMenuWidth + ')'
           });
+          this.$menu.addClass('semiOpen');
         } else {
           this.$menu.css(settings.side, '-' + this.width);
           this.$push.css(settings.side, '0');
