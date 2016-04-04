@@ -1,4 +1,4 @@
-/*! bigSlide - v0.10.0 - 2016-04-03
+/*! bigSlide - v0.10.0 - 2016-04-04
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2016 Adam D. Scott; Licensed MIT */
 (function (factory) {
@@ -189,7 +189,9 @@
         } else if (initialState === 'open') {
           this.$menu.css(settings.side, '0');
           this.$push.css(settings.side, this.width);
-          this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
+          this.$shrink.css({
+            'width': 'calc(100% - ' + this.width + ')'
+          });
           menuLink.addClass(settings.activeBtn);
         }
 

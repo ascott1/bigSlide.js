@@ -186,7 +186,9 @@
         } else if (initialState === 'open') {
           this.$menu.css(settings.side, '0');
           this.$push.css(settings.side, this.width);
-          this.$shrink.css('width', '100%').css('width', '-=' + this.$menu.width());
+          this.$shrink.css({
+            'width': 'calc(100% - ' + this.width + ')'
+          });
           menuLink.addClass(settings.activeBtn);
         }
 
