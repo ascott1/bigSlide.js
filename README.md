@@ -70,6 +70,8 @@ To initialize the plugin,:
 | speed       | 300           | The speed (in milliseconds) of the navigation menu    |
 | easyClose   | false         | Set this to `true` to allow users to toggle the menu closed with any click    |
 | activeBtn   | active        | This class is added to the menu button when it is open. By default the class is `.active`    |
+| semiOpenStatus   | false    | Set this to `true` to collapse the menu instead of closing it seeing only part of it    |
+| semiOpenScreenWidth   | 480    | The minimum necessary screen width in pixels to allow the semiOpenStatus    |
 | beforeOpen  | function() {} | A method called before the trigger open event |
 | afterOpen   | function() {} | A method called after the trigger open event |
 | beforeClose | function() {} | A method called before the trigger close event |
