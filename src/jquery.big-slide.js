@@ -288,6 +288,31 @@
       toggleOpen: function() {
         settings.beforeOpen();
         controller.changeState();
+        view.applyOpenStyles();
+        menuLink.addClass(settings.activeBtn);
+        settings.afterOpen();
+
+        // save the state
+        if (settings.saveState) {
+          localStorage.setItem('bigSlide-savedState', 'open');
+        }
+      },
+
+      // toggle the menu closed
+      toggleClose: function() {
+        settings.beforeClose();
+        controller.changeState();
+        view.applyClosedStyles();
+        menuLink.removeClass(settings.activeBtn);
+        settings.afterClose();
+
+        // save the state
+        if (settings.saveState) {
+          localStorage.setItem('bigSlide-savedState', 'closed');
+        }
+      },
+
+      applyOpenStyles: function() {
         var screenWidth = $(window).width();
         if (settings.semiOpenStatus && screenWidth > settings.semiOpenScreenWidth) {
           this.$hiddenThin.show();
@@ -304,19 +329,9 @@
             'width': 'calc(100% - ' + this.width + ')'
           });
         }
-        menuLink.addClass(settings.activeBtn);
-        settings.afterOpen();
-
-        // save the state
-        if (settings.saveState) {
-          localStorage.setItem('bigSlide-savedState', 'open');
-        }
       },
 
-      // toggle the menu closed
-      toggleClose: function() {
-        settings.beforeClose();
-        controller.changeState();
+      applyClosedStyles: function() {
         var screenWidth = $(window).width();
         if (settings.semiOpenStatus && screenWidth > settings.semiOpenScreenWidth) {
           this.$hiddenThin.hide();
@@ -330,13 +345,6 @@
           this.$menu.css(settings.side, '-' + this.width);
           this.$push.css(settings.side, '0');
           this.$shrink.css('width', '100%');
-        }
-        menuLink.removeClass(settings.activeBtn);
-        settings.afterClose();
-
-        // save the state
-        if (settings.saveState) {
-          localStorage.setItem('bigSlide-savedState', 'closed');
         }
       }
 
