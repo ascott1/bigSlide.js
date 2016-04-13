@@ -2,7 +2,7 @@
   "name": "bigSlide",
   "title": "bigSlide",
   "description": "A tiny jQuery plugin for creating off-screen slide panel navigation.",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "homepage": "http://ascott1.github.io/bigSlide.js/",
   "author": {
     "name": "Adam D. Scott",
