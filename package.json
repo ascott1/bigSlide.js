@@ -3,7 +3,8 @@
   "version": "0.12.0",
   "description": "A tiny slide panel navigation jQuery plugin with big dreams",
   "author": "Adam D. Scott <hello@adamdscott.com>",
-  "main": "dist/jquery.big-slide.js",
+  "main": "dist/bigSlide.js",
+  "license": "MIT",
   "scripts": {
     "test": "grunt test"
   },
