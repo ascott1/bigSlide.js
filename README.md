@@ -56,7 +56,19 @@ To initialize the plugin,:
         $('.menu-link').bigSlide();
     });
     </script>
+    
+You can initialize the plugin with predefined options. Ensure each value is surrounded in quotations:
 
+	<script>
+    $(document).ready(function() {
+        $('.menu-link').bigSlide({
+		menuWidth:'18em',
+		push:'(.mypush)',
+		speed:'450'
+	});
+    });
+    </script>
+    
 ## Options
 
 | Variable    | Default Value | Description       |
