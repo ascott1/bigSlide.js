@@ -63,7 +63,7 @@ You can initialize the plugin with predefined options. Ensure each value is surr
     $(document).ready(function() {
         $('.menu-link').bigSlide({
 		menuWidth:'18em',
-		push:'(.mypush)',
+		push: ('.mypush'),
 		speed:'450'
 	});
     });
