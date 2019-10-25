@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ascott1/bigSlide.js.png?branch=master)](https://travis-ci.org/ascott1/bigSlide.js)
+# :warning: This project is no longer supported. :warning:
 
 bigSlide is a teeny tiny (~1kb compressed) jQuery plugin for creating off-screen slide panel navigation.
 
